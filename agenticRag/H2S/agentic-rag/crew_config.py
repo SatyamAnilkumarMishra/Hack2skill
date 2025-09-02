@@ -1,22 +1,15 @@
 from crewai import Agent
-import google.generativeai as genai
-import os
-from dotenv import load_dotenv
 
-# Load Gemini key
-load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+# Define your agent here
+agent = Agent(
+    role="career-guide",
+    goal="Guide students on AI, ML, and software careers",
+    backstory=(
+        "You are an expert in AI, Machine Learning, Data Science, and career development. "
+        "You help students by analyzing their interests and skills to suggest the best career paths."
+    ),
+)
 
+# Function to return the agent (for app.py or main.py)
 def build_agent():
-    class GeminiAgent(Agent):
-        def respond(self, prompt):
-            model = genai.GenerativeModel("gemini-1.5-flash")
-            response = model.generate_content(prompt)
-            return response.text
-
-    return GeminiAgent(
-        role="RAG Assistant",
-        goal="Answer queries using retrieval augmented generation",
-        backstory="An AI assistant powered by Google Gemini"
-    )
-
+    return agent
