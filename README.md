@@ -13,4 +13,4 @@ Contributor in this project
 # Anant Shukla
 # Ayush Nigam
 # Pranav Nair
-# Satyam Mishra
+
